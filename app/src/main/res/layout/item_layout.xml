@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.noemi.android.mykotlin.model.Item"/>
+        <variable
+            name="clickListener"
+            type="com.noemi.android.mykotlin.itemlistener.ItemClickListener"/>
+    </data>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:onClick="@{() -> clickListener.onItemClicked(item)}"
+            app:cardCornerRadius="20dp"
+            android:elevation="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+
+            <LinearLayout
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/item_image"
+                    android:contentDescription="@string/todo"
+                    android:scaleType="centerCrop"
+                    android:src="@{item.url}"
+                    android:layout_margin="3dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp" />
+
+                <TextView
+                    android:id="@+id/item_first_name"
+                    android:text="@{item.firstName}"
+                    android:fontFamily="@font/avenirmedium"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:layout_gravity="center_vertical"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/item_last_name"
+                    android:text="@{item.lastName}"
+                    android:fontFamily="@font/avenirmedium"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</layout>
